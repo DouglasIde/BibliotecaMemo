@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ExcluirPensamentoComponent {
 
   pensamento: Pensamento = {
-    id: '',
+    id: 0,
     conteudo: '',
     autoria: '',
     modelo: ''
@@ -34,7 +34,8 @@ export class ExcluirPensamentoComponent {
 
   excluirPensamento(){
     if(this.pensamento.id){
-      this.service.excluir(this.pensamento.id).subscribe(() => {
+      const idString = this.pensamento.id.toString();
+      this.service.excluir(idString).subscribe(() => {
         this.router.navigate(['/listarPensamento'])
       })
     }

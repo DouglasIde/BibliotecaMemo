@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Pensamento } from './../pensamento';
 import { PensamentoService } from '../pensamento.service';
 import { Router } from '@angular/router';
+import { EditarPensamentoComponent } from '../editar-pensamento/editar-pensamento.component';
 
 @Component({
   selector: 'app-criar-pensamento',
   templateUrl: './criar-pensamento.component.html',
-  styleUrls: ['./criar-pensamento.component.scss']
+  styleUrls: ['./criar-pensamento.component.scss'],
 })
 export class CriarPensamentoComponent implements OnInit {
 
