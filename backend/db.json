@@ -1,22 +1,10 @@
 {
-    "pensamentos": [
-        {
-            "id": 0,
-            "conteudo": "Welcome to the Mato",
-            "autoria": "Douglas",
-            "modelo": "modelo1"
-        },
-        {
-            "id": 1,
-            "conteudo": "Java é melhor que Python",
-            "autoria": "Gabriel",
-            "modelo": "modelo2"
-        },
-        {
-            "id": 2,
-            "conteudo": "Corinthians não vai cair esse ano!!",
-            "autoria": "Oscar",
-            "modelo": "modelo3"
-        }
-    ]
+  "pensamentos": [
+    {
+      "id": "0",
+      "conteudo": "Welcome to the Mato",
+      "autoria": "Douglas",
+      "modelo": "modelo1"
+    }
+  ]
 }

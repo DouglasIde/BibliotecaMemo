@@ -24,6 +24,7 @@
                     <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
                 </div>
             </div>
+            
             <div class="radio-modelo">
                 <label for="modelo2">
                     <input type="radio" id="modelo2" value="modelo2" name="modelo-card" [(ngModel)]="pensamento.modelo">
@@ -35,8 +36,8 @@
                 Prévia:
                 <div class="modelo modelo2 ff-roboto-mono">
                     <img src="../../../../assets/img/modelo2.png" alt="Aspas azul claro">
-                    <p class="conteudo">Aqui vai o conteúdo</p>
-                    <p class="autoria"><b>Aqui vai a autoria</b></p>
+                    <p class="conteudo">{{ pensamento.conteudo }}</p>
+                    <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
                 </div>
             </div>
             <div class="radio-modelo">
@@ -50,8 +51,8 @@
                 Prévia:
                 <div class="modelo modelo3 ff-roboto-mono">
                     <img src="../../../../assets/img/modelo3.png" alt="Aspas verdes">
-                    <p class="conteudo">Aqui vai o conteúdo</p>
-                    <p class="autoria"><b>Aqui vai a autoria</b></p>
+                    <p class="conteudo">{{ pensamento.conteudo }}</p>
+                    <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
                 </div>
             </div>
         </div>
