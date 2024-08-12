@@ -21,6 +21,7 @@
 <p>O projeto foi desenvolvido como parte do curso de Angular da Alura, com o objetivo de criar um website que permite aos usuários registrar e exibir seus pensamentos em um formato de bloco de notas.</p>
 
 <em>The project was developed during Alura's Angular course. The aim was to create a website where users could post their thoughts and have them displayed in a notepad format.</em><br><br>
+
 <div align="center">
   <p><em>ALERT: O link da Vercel não está funcionando corretamente, pois o website depende da execução prévia da API para funcionar adequadamente. Sendo assim, o acesso direto através do link da Vercel não irá apresentar o funcionamento esperado.</em></p>
 
@@ -34,4 +35,8 @@
 <li>In your IDE's terminal, start the json-server API using the <b>npm start</b> command. <em>No terminal da sua IDE, inicie a API json-server utilizando o comando <b>npm start</b></em></li>
 <li>In a new terminal, run the <b>ng server</b> or <b>ng s</b> command.<em> Em um novo terminal, execute o comando <b>ng serve</b> ou <b>ng s</b></em></li><br><br>
 <p>This will initialize the API server and the application development server.</p>
-<p><em>Este procedimento inicializará o servidor da API e o servidor de desenvolvimento da aplicação.</em></p>
+<p><em>Este procedimento inicializará o servidor da API e o servidor de desenvolvimento da aplicação.</em></p><br>
+
+<div align="center">
+  <img src="README_files/exibition-project.gif" alt="Biblioteca Memo">
+</div>
