@@ -25,4 +25,13 @@
   <p><em>ALERT: O link da Vercel não está funcionando corretamente, pois o website depende da execução prévia da API para funcionar adequadamente. Sendo assim, o acesso direto através do link da Vercel não irá apresentar o funcionamento esperado.</em></p>
 
   <p><em>ALERT: The VERCEL link is not working, because for the website to work it needs to execute the API first. So it won't work via the Vercel link.</em></p>
-</div>
+</div><br>
+
+<h1>🤔How to use</h1>
+<p>To run this project, follow these steps: </p>
+<p><em>Para executar este projeto, siga os seguintes passos:</em></p><br>
+
+<li>In your IDE's terminal, start the json-server API using the <b>npm start</b> command. <em>No terminal da sua IDE, inicie a API json-server utilizando o comando <b>npm start</b></em></li>
+<li>In a new terminal, run the <b>ng server</b> or <b>ng s</b> command.<em> Em um novo terminal, execute o comando <b>ng serve</b> ou <b>ng s</b></em></li><br><br>
+<p>This will initialize the API server and the application development server.</p>
+<p><em>Este procedimento inicializará o servidor da API e o servidor de desenvolvimento da aplicação.</em></p>
