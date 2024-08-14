@@ -40,3 +40,18 @@
 <div align="center">
   <img src="README_files/exibition-project.gif" alt="Biblioteca Memo">
 </div>
+
+<h1>🚀Features</h1>
+<li>Thoughts created and stored in a JSON format within Json-server;</li>
+<li>Editing thoughts;</li>
+<li>Exclusion of thoughts.</li>
+
+<h1>🌐Technologies</h1>
+<ul>
+  <li><a href="https://angular.dev/">Angular</li>
+</ul>
+
+<h1>📦Branches</h1>
+<li><b>main</b>: The main branch with the complete project up and running.</li>
+<li><b>features</b>: A branch with improvements and extra elements in the project.</li>
+
