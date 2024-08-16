@@ -12,6 +12,9 @@
         <div class="mensagem__erro" *ngIf="formulario.get('conteudo')?.errors?.['minlength'] && formulario.get('conteudo')?.touched">
             Pensamento precisa ter no mínimo 5 caracteres!
         </div>
+        <div class="mensagem__erro" *ngIf="formulario.get('conteudo')?.errors?.['minusculo'] && formulario.get('conteudo')?.touched">
+            Esse campo aceita apenas letras minúsculas
+        </div>
 
         <label for="autoria">Autoria</label>
         <input type="textarea" class="input" id="autoria" formControlName="autoria" placeholder="Digite a autoria ou fonte">
@@ -21,6 +24,9 @@
         </div>
         <div class="mensagem__erro" *ngIf="formulario.get('autoria')?.errors?.['minlength'] && formulario.get('autoria')?.touched">
             Autoria precisa ter no mínimo 3 caracteres!
+        </div>
+        <div class="mensagem__erro" *ngIf="formulario.get('autoria')?.errors?.['minusculo'] && formulario.get('autoria')?.touched">
+            Esse campo aceita apenas letras minúsculas
         </div>
 
         <label for="modelo">Selecione o modelo do Card: </label>
