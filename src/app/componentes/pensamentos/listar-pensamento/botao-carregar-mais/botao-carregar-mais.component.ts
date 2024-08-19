@@ -11,7 +11,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class BotaoCarregarMaisComponent {
 
   @Input() haMaisPensamentos: boolean = false;
-  @Output() click = new EventEmitter<void>();
 
   constructor(){ }
 
