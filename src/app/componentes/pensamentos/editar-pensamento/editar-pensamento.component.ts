@@ -18,7 +18,8 @@ export class EditarPensamentoComponent {
     id: 0,
     conteudo: '',
     autoria: '',
-    modelo: ''
+    modelo: '',
+    favorito: false
   }
 
   constructor(
@@ -40,7 +41,8 @@ export class EditarPensamentoComponent {
         Validators.minLength(3),
         minusculoValidator
       ])],
-      modelo: ['modelo1']
+      modelo: [this.pensamento.modelo],
+      favorito: [this.pensamento.favorito]
     })
     }
   
