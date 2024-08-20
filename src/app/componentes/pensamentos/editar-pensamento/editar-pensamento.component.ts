@@ -2,7 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PensamentoService } from '../pensamento.service';
 import { Pensamento } from './../pensamento';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './editar-pensamento.component.scss'
 })
 export class EditarPensamentoComponent {
+
+  formulario!: FormGroup;
 
   pensamento: Pensamento = {
     id: '',
@@ -22,7 +24,8 @@ export class EditarPensamentoComponent {
   constructor(
     private service: PensamentoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private FormBuilder: FormBuilder
   ){ }
 
   ngOnInit(): void{
