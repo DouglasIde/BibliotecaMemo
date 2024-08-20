@@ -2,7 +2,7 @@ import { ListarPensamentoComponent } from './listar-pensamento/listar-pensamento
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pensamento } from './pensamento';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,10 @@ export class PensamentoService {
 
   listar(pagina: number, filtro: string, favorito: boolean): Observable<Pensamento[]>{
     const itensPorPagina = 6;
-    let params = new HttpParams().set("_page", pagina).set("_limit", itensPorPagina)
+    let params = new HttpParams().set("_page", pagina.toString()).set("_limit", itensPorPagina)
 
-    if(filtro.trim().length > 2){
-      params = params.set("q", filtro)
+    if(filtro.trim().length > 0){
+      params = params.set('conteudo', filtro)
     }
 
     if(favorito){

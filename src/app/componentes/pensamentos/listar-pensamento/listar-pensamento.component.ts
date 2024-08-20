@@ -5,6 +5,7 @@ import { BotaoCarregarMaisComponent } from './botao-carregar-mais/botao-carregar
 import { NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -22,12 +23,15 @@ export class ListarPensamentoComponent implements OnInit {
   listaFavoritos: Pensamento[] = [];
   titulo: string = 'Meu Mural';
 
+  filtroSubject: Subject<string> = new Subject<string>();
+
   constructor(
     private service: PensamentoService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.carregarMaisPensamentos();
     this.service.listar(++this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos) => {
       this.listaPensamentos = listaPensamentos
     })
@@ -55,6 +59,8 @@ export class ListarPensamentoComponent implements OnInit {
   }
 
   pesquisarPensamentos(){
+    console.log('Filtrando pensamentos com filtro: ', this.filtro);
+    this.carregarMaisPensamentos();
     this.haMaisPensamentos = true;
     this.paginaAtual = 1;
     this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
