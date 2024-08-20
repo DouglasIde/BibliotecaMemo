@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ExcluirPensamentoComponent {
 
   pensamento: Pensamento = {
-    id: 0,
+    id: '',
     conteudo: '',
     autoria: '',
     modelo: '',

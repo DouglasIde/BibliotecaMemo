@@ -1,18 +1,3 @@
 {
-  "pensamentos": [
-    {
-      "id": "071e",
-      "conteudo": "teste",
-      "autoria": "teste",
-      "modelo": "modelo2",
-      "favorito": false
-    },
-    {
-      "id": "d3c3",
-      "conteudo": "corinthians",
-      "autoria": "douglas",
-      "modelo": "modelo3",
-      "favorito": false
-    }
-  ]
+  "pensamentos": []
 }
