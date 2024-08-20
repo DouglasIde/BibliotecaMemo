@@ -46,15 +46,12 @@ export class EditarPensamentoComponent {
         favorito: [false]
       });
     
-      // Capturar o ID da rota
       const id = this.route.snapshot.paramMap.get('id');
     
       if(id) {
-        // Buscar o pensamento pelo ID
         this.service.buscarPorId(id).subscribe((pensamento: Pensamento) => {
           this.pensamento = pensamento;
     
-          // Atualizar o formulário com os dados do pensamento
           this.formulario.patchValue({
             conteudo: this.pensamento.conteudo,
             autoria: this.pensamento.autoria,
