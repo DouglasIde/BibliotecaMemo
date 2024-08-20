@@ -12,14 +12,14 @@
       "conteudo": "teste",
       "autoria": "teste",
       "modelo": "modelo1",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": "5f6f",
       "conteudo": "teste",
       "autoria": "douglas",
       "modelo": "modelo3",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": "bf7d",
