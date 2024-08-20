@@ -69,15 +69,6 @@ export class EditarPensamentoComponent {
       }
     }
   
-    
-  
-
-  // editarPensamento(){
-  //   this.service.editar(this.pensamento).subscribe(() => {
-  //     this.router.navigate(['/listarPensamento'])
-  //   })
-  // }
-
   editarPensamento(): void {
       if (this.pensamento.id) {
         this.pensamento.conteudo = this.formulario.get('conteudo')?.value;
@@ -86,7 +77,7 @@ export class EditarPensamentoComponent {
         this.pensamento.favorito = this.formulario.get('favorito')?.value;
     
         this.service.editar(this.pensamento).subscribe(() => {
-          this.router.navigate(['/listarPensamento']);
+          this.router.navigate(['/list']);
         }, error => {
           console.error('Erro ao editar o pensamento:', error);
         });
