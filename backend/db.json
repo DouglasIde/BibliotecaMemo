@@ -1,3 +1,25 @@
 {
-  "pensamentos": []
+  "pensamentos": [
+    {
+      "id": "1030",
+      "conteudo": "Seja Bem-vindo(a) ao meu projeto",
+      "autoria": "douglas",
+      "modelo": "modelo1",
+      "favorito": false
+    },
+    {
+      "id": "1b22",
+      "conteudo": "Eu prefiro morrer do que perder a vida",
+      "autoria": "chaves",
+      "modelo": "modelo2",
+      "favorito": false
+    },
+    {
+      "id": "f2d8",
+      "conteudo": "Um homem que nasce torto, nunca pode ser reto",
+      "autoria": "chapolin colorado",
+      "modelo": "modelo3",
+      "favorito": false
+    }
+  ]
 }

@@ -77,7 +77,7 @@ export class EditarPensamentoComponent {
         this.pensamento.favorito = this.formulario.get('favorito')?.value;
     
         this.service.editar(this.pensamento).subscribe(() => {
-          this.router.navigate(['/list']);
+          this.router.navigate(['/listarPensamento']);
         }, error => {
           console.error('Erro ao editar o pensamento:', error);
         });
