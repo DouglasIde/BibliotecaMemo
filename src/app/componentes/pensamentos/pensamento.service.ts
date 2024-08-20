@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { ListarPensamentoComponent } from './listar-pensamento/listar-pensamento.component';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pensamento } from './pensamento';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,49 @@ export class PensamentoService {
   private readonly API = 'http://localhost:3000/pensamentos'
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<Pensamento[]>{
-    return this.http.get<Pensamento[]>(this.API);
+  listar(pagina: number, filtro: string, favorito: boolean): Observable<Pensamento[]>{
+    const itensPorPagina = 6;
+    let params = new HttpParams().set("_page", pagina.toString()).set("_limit", itensPorPagina)
+
+    if(filtro.trim().length > 0){
+      params = params.set('conteudo', filtro)
+    }
+
+    if(favorito){
+      params = params.set("favorito", true);
+    }
+
+
+    return this.http.get<Pensamento[]>(this.API, {params})
   }
+
+  // listarPensamentosFavoritos(pagina: number, filtro: string): Observable<Pensamento[]>{
+  //   const  itensPorPagina = 6;
+
+  //   let params = new HttpParams()
+  //   .set("_page", pagina)
+  //   .set("_limit", itensPorPagina)
+  //   .set("favorito", true)
+
+  //   if(filtro.trim().length > 2){
+  //     params = params.set("q", filtro)
+  //   }
+
+  //   return this.http.get<Pensamento[]>(this.API, { params })
+  // }
 
   criar(pensamento: Pensamento): Observable<Pensamento> {
     return this.http.post<Pensamento>(this.API, pensamento)
   }
 
   editar(pensamento: Pensamento): Observable<Pensamento> {
-    const url = `${this.API}/${pensamento.id}`
+    const url = `${this.API}/${pensamento.id}`;
     return this.http.put<Pensamento>(url, pensamento)
+  }
+
+  mudarFavorito(pensamento: Pensamento): Observable<Pensamento>{
+    pensamento.favorito = !pensamento.favorito
+    return this.editar(pensamento)
   }
 
   excluir(id: string): Observable<Pensamento> {
