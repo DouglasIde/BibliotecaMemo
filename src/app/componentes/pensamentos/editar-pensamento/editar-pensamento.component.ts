@@ -2,8 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PensamentoService } from '../pensamento.service';
 import { Pensamento } from './../pensamento';
 import { Component } from '@angular/core';
-import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { minusculoValidator } from '../../minusculoValidator/minusculoValidator';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -11,8 +10,6 @@ import { minusculoValidator } from '../../minusculoValidator/minusculoValidator'
   styleUrl: './editar-pensamento.component.scss'
 })
 export class EditarPensamentoComponent {
-
-  formulario!: FormGroup;
 
   pensamento: Pensamento = {
     id: '',
@@ -25,78 +22,23 @@ export class EditarPensamentoComponent {
   constructor(
     private service: PensamentoService,
     private router: Router,
-    private route: ActivatedRoute,
-    private FormBuilder: FormBuilder
+    private route: ActivatedRoute
   ){ }
 
   ngOnInit(): void{
-      
-      this.formulario = this.FormBuilder.group({
-        conteudo: ['', Validators.compose([
-          Validators.required,
-          Validators.pattern(/(.|\s)*\S(.|\s)*/),
-          Validators.minLength(5)
-        ])],
-        autoria: ['', Validators.compose([
-          Validators.required,
-          Validators.minLength(3),
-          minusculoValidator
-        ])],
-        modelo: [''],
-        favorito: [false]
-      });
-    
-      // Capturar o ID da rota
-      const id = this.route.snapshot.paramMap.get('id');
-    
-      if(id) {
-        // Buscar o pensamento pelo ID
-        this.service.buscarPorId(id).subscribe((pensamento: Pensamento) => {
-          this.pensamento = pensamento;
-    
-          // Atualizar o formulário com os dados do pensamento
-          this.formulario.patchValue({
-            conteudo: this.pensamento.conteudo,
-            autoria: this.pensamento.autoria,
-            modelo: this.pensamento.modelo,
-            favorito: this.pensamento.favorito
-          });
-        }, error => {
-          console.error('Erro ao buscar pensamento:', error);
-        });
-      } else {
-        console.error('ID do pensamento não encontrado na rota');
-      }
-    }
-  
-  editarPensamento(): void {
-      if (this.pensamento.id) {
-        this.pensamento.conteudo = this.formulario.get('conteudo')?.value;
-        this.pensamento.autoria = this.formulario.get('autoria')?.value;
-        this.pensamento.modelo = this.formulario.get('modelo')?.value;
-        this.pensamento.favorito = this.formulario.get('favorito')?.value;
-    
-        this.service.editar(this.pensamento).subscribe(() => {
-          this.router.navigate(['/list']);
-        }, error => {
-          console.error('Erro ao editar o pensamento:', error);
-        });
-      } else {
-        console.error('Pensamento sem ID não pode ser editado');
-      }
-    }
-    
+    const id = this.route.snapshot.paramMap.get('id')
+    this.service.buscarPorId(id!).subscribe((pensamento) => {
+      this.pensamento = pensamento
+    })
+  }
 
+  editarPensamento(){
+    this.service.editar(this.pensamento).subscribe(() => {
+      this.router.navigate(['/listarPensamento'])
+    })
+  }
 
   cancelar(){
     this.router.navigate(['/listarPensamento'])
-  }
-
-  habilitarBotao(){
-    if(this.formulario.valid){
-      return 'botao'
-    } else {
-      return 'botao__desabilitado'
-    }
   }
 }
