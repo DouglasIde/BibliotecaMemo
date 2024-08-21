@@ -9,7 +9,7 @@ import { map, Observable } from 'rxjs';
 })
 export class PensamentoService {
 
-  private readonly API = 'http://localhost:3000/pensamentos'
+  private readonly API = 'http://localhost:8080/pensamentos'
   constructor(private http: HttpClient) { }
 
   listar(pagina: number, filtro: string, favorito: boolean): Observable<Pensamento[]>{
