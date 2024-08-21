@@ -8,11 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.douglas.memoteca.model.Pensamento;
 import com.douglas.memoteca.repository.IPensamentoRepository;
+
+import jakarta.validation.Valid;
+
+
 
 @RestController
 @RequestMapping("/pensamentos")
@@ -38,4 +44,10 @@ public class PensamentoController {
 	public ResponseEntity<List<Pensamento>> getByConteudo(@PathVariable String conteudo){
 		return ResponseEntity.ok(pensamentoRepository.findAllByConteudoContainingIgnoreCase(conteudo));
 	}
+	
+	@PostMapping
+	public ResponseEntity<Pensamento> post(@Valid @RequestBody Pensamento pensamento){
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(pensamentoRepository.save(pensamento));
+	}	
 }
