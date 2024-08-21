@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,5 +50,14 @@ public class PensamentoController {
 	public ResponseEntity<Pensamento> post(@Valid @RequestBody Pensamento pensamento){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(pensamentoRepository.save(pensamento));
-	}	
+	}
+	
+	@PutMapping
+	public ResponseEntity<Pensamento> put(@Valid @RequestBody Pensamento pensamento){
+		return pensamentoRepository.findById(pensamento.getId())
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK)
+						.body(pensamentoRepository.save(pensamento)))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
 }
+
