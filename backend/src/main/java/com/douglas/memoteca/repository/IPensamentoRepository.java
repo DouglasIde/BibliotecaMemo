@@ -1,5 +1,9 @@
 package com.douglas.memoteca.repository;
 
-public interface IPensamentoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.douglas.memoteca.model.Pensamento;
+
+public interface IPensamentoRepository extends JpaRepository<Pensamento, Long>{
 
 }
