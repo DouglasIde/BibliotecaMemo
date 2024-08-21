@@ -24,7 +24,6 @@ export class PensamentoService {
       params = params.set("favorito", true);
     }
 
-
     return this.http.get<Pensamento[]>(this.API, {params})
   }
 
