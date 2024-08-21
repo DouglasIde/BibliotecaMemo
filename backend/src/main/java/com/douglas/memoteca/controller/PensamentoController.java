@@ -33,4 +33,9 @@ public class PensamentoController {
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
+	
+	@GetMapping("/conteudo/{conteudo}")
+	public ResponseEntity<List<Pensamento>> getByConteudo(@PathVariable String conteudo){
+		return ResponseEntity.ok(pensamentoRepository.findAllByConteudoContainingIgnoreCase(conteudo));
+	}
 }
