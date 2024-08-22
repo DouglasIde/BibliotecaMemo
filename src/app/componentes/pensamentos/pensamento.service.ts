@@ -13,18 +13,38 @@ export class PensamentoService {
   constructor(private http: HttpClient) { }
 
   listar(pagina: number, filtro: string, favorito: boolean): Observable<Pensamento[]>{
-    const itensPorPagina = 6;
-    let params = new HttpParams().set("_page", pagina.toString()).set("_limit", itensPorPagina)
+    // const itensPorPagina = 6;
+    // let params = new HttpParams().set("_page", pagina.toString()).set("_limit", itensPorPagina)
+
+    // if(filtro.trim().length > 0){
+    //   params = params.set('conteudo', filtro)
+    // }
+
+    // if(favorito){
+    //   params = params.set("favorito", true);
+    // }
+
+    // return this.http.get<Pensamento[]>(this.API, {params})
+
+    let url = this.API;
+    let queryParams: string[] = [];
 
     if(filtro.trim().length > 0){
-      params = params.set('conteudo', filtro)
+      queryParams.push(`conteudo=${filtro}`)
+    }
+    if(favorito) {
+      queryParams.push('favorito=true')
     }
 
-    if(favorito){
-      params = params.set("favorito", true);
+    const start = (pagina - 1) * 6;
+    const end = start + 6;
+    queryParams.push(`_start=${start}&_end=${end}`);
+
+    if(queryParams.length > 0){
+      url += `?${queryParams.join('&')}`;
     }
 
-    return this.http.get<Pensamento[]>(this.API, {params})
+    return this.http.get<Pensamento[]>(url);
   }
 
   // listarPensamentosFavoritos(pagina: number, filtro: string): Observable<Pensamento[]>{

@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/pensamentos")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*")
 public class PensamentoController {
 
 	@Autowired
@@ -56,12 +56,15 @@ public class PensamentoController {
 				.body(pensamentoRepository.save(pensamento));
 	}
 	
-	@PutMapping
-	public ResponseEntity<Pensamento> put(@Valid @RequestBody Pensamento pensamento){
-		return pensamentoRepository.findById(pensamento.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-						.body(pensamentoRepository.save(pensamento)))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	@PutMapping("/{id}")
+	public ResponseEntity<Pensamento> put(@PathVariable Long id, @Valid @RequestBody Pensamento pensamento){
+	    return pensamentoRepository.findById(id)
+	            .map(resposta -> {
+	                pensamento.setId(id); // 
+	                return ResponseEntity.status(HttpStatus.OK)
+	                    .body(pensamentoRepository.save(pensamento));
+	            })
+	            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());	
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
@@ -71,7 +74,6 @@ public class PensamentoController {
 		
 		if(pensamento.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		
 		pensamentoRepository.deleteById(id);
 	}
 }
