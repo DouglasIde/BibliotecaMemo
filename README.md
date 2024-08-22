@@ -54,4 +54,5 @@
 <h1>📦Branches</h1>
 <li><b>main</b>: The main branch with the complete project up and running.</li>
 <li><b>features</b>: A branch with improvements and extra elements in the project.</li>
+<li><b>api</b>: Branch dedicated to the development of an API in Spring Boot for the storage of thought information.</li>
 
