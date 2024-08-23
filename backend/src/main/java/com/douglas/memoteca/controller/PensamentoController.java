@@ -76,5 +76,10 @@ public class PensamentoController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		pensamentoRepository.deleteById(id);
 	}
+	
+	@GetMapping("/favoritos")
+	public ResponseEntity<List<Pensamento>> getFavoritos(){
+		return ResponseEntity.ok(pensamentoRepository.findAllByFavorito(true));
+	}
 }
 

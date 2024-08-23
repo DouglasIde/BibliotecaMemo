@@ -28,12 +28,25 @@ export class PensamentoService {
 
     let url = this.API;
     let queryParams: string[] = [];
+    let params = new HttpParams();
+
+    params = params.set('pagina', pagina.toString());
 
     if(filtro.trim().length > 0){
       queryParams.push(`conteudo=${filtro}`)
     }
-    if(favorito) {
-      queryParams.push('favorito=true')
+
+    // if(favorito) {
+    //   params = params.set('favorito', true)
+    // }
+
+    if(favorito){
+      url += '/favoritos';
+    } else { 
+      let queryParams: string[] = [];
+      if(filtro.trim().length > 0){
+        queryParams.push(`conteudo=${filtro}`);
+      }
     }
 
     const start = (pagina - 1) * 6;

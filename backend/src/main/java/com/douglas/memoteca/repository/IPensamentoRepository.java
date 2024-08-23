@@ -9,4 +9,5 @@ import com.douglas.memoteca.model.Pensamento;
 
 public interface IPensamentoRepository extends JpaRepository<Pensamento, Long>{
 	public List<Pensamento> findAllByConteudoContainingIgnoreCase(@Param("conteudo") String conteudo);
+	public List<Pensamento> findAllByFavorito(boolean favorito);
 }
