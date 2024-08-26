@@ -59,6 +59,24 @@
   <img src="README_files/gifs/EditarPensamento.gif" alt="Edit thoughts">
 </div>
 
+<h3>❤Favorite thoughts</h3>
+<p>You can favorite your thoughts by clicking on the heart icon. They will be saved in 'My Favorites'. To un-favorite, simply click on the icon again, and the thought will be removed from the favorites list and will only be displayed on 'My Wall'.</p>
+<div align="center">
+  <img src="README_files/gifs/FavoritarPensamento.gif" alt="Favorite thoughts">
+</div>
+
+<h3>🔍Search thoughts</h3>
+<p>Search by thoughts or authors to filter and view the content you want.</p>
+<div align="center">
+  <img src="README_files/gifs/PesquisarPensamento.gif" alt="Searching thoughts">
+</div>
+
+<h3>❌Remove thoughts</h3>
+<p>Removing thoughts will permanently delete it from the database, with no possibility of reversing the deletion.</p>
+<div align="center">
+  <img src="README_files/gifs/ExcluirPensamento.gif" alt="Deleting thoughts">
+</div>
+
 <h1>🌐Technologies</h1>
 <ul>
   <li><a href="https://angular.dev/">Angular</li>
