@@ -1,7 +1,7 @@
 <section class="container">
     <header class="header d-flex">
         <div class="buscar-pensamentos">
-            <input type="search" class="filtro" placeholder="O que você procura?" autofocus [(ngModel)]="filtro" (input)="pesquisarPensamentos()">
+            <input type="search" class="filtro" placeholder="O que você procura?" autofocus [(ngModel)]="filtro" (keyup)="aplicarFiltro(filtro)">
             <img src="/assets/img/lupa.png" alt="Lupa azul">
         </div>
         <h2 class="ff-inter">{{ titulo }}</h2>

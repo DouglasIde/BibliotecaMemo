@@ -28,12 +28,18 @@ export class PensamentoService {
 
     let url = this.API;
     let queryParams: string[] = [];
-    let params = new HttpParams();
+    let params = new HttpParams()
+      .set('pagina', pagina.toString())
+      .set('filtro', filtro);
 
-    params = params.set('pagina', pagina.toString());
+    // params = params.set('pagina', pagina.toString());
+
+    // if(filtro.trim().length > 0){
+    //   queryParams.push(`conteudo=${filtro}`)
+    // }
 
     if(filtro.trim().length > 0){
-      queryParams.push(`conteudo=${filtro}`)
+      params = params.set('filtro', filtro);
     }
 
     // if(favorito) {
@@ -57,7 +63,8 @@ export class PensamentoService {
       url += `?${queryParams.join('&')}`;
     }
 
-    return this.http.get<Pensamento[]>(url);
+    return this.http.get<Pensamento[]>(url, {params});
+    return this.http.get<Pensamento[]>('API/buscar', {params: params})
   }
 
   // listarPensamentosFavoritos(pagina: number, filtro: string): Observable<Pensamento[]>{
@@ -82,6 +89,11 @@ export class PensamentoService {
   editar(pensamento: Pensamento): Observable<Pensamento> {
     const url = `${this.API}/${pensamento.id}`;
     return this.http.put<Pensamento>(url, pensamento)
+  }
+
+  buscarPensamento(filtro: string): Observable<Pensamento[]> {
+    let params = new HttpParams().set('filtro', filtro);
+    return this.http.get<Pensamento[]>(`${this.API}/buscar`, { params });
   }
 
   mudarFavorito(pensamento: Pensamento): Observable<Pensamento>{
