@@ -55,7 +55,7 @@
 <ul>
   <li><a href="https://angular.dev/">Angular</li>
   <li><a href="https://spring.io/">Spring Boot</li>
-  <li><a href="https://www.java.com/pt-BR/"></li>
+  <li><a href="https://www.java.com/pt-BR/">Java</li>
 </ul>
 
 <h1>📦Branches</h1>
