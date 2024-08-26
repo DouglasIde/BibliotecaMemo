@@ -5,7 +5,7 @@ import { BotaoCarregarMaisComponent } from './botao-carregar-mais/botao-carregar
 import { NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { debounceTime, Subject } from 'rxjs';
+import { debounceTime, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -31,41 +31,48 @@ export class ListarPensamentoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.carregarPensamentos();
     this.carregarMaisPensamentos();
     this.service.listar(++this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos) => {
       this.listaPensamentos = listaPensamentos
     })
   }
 
-  // carregarMaisPensamentos(){
-  //   this.service.listar(++this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
-  //     this.listaPensamentos.push(...listaPensamentos);
-  //     if(!listaPensamentos.length){
-  //       this.haMaisPensamentos = false
-  //     }
-  //   })
-  // }
+  listarPensamentos(): void{
+    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
+      this.listaPensamentos = listaPensamentos;
+    })
+  }
 
-  carregarMaisPensamentos(){
-    this.service.listar(++this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
+ aplicarFiltro(filtro: string): void{
+  this.filtro = filtro;
+  this.paginaAtual = 1;
+  this.service.buscarPensamento(filtro).subscribe(listaPensamentos => {
+    this.listaPensamentos = listaPensamentos;
+  });
+ }
+
+ carregarPensamentos(){
+  this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
+    console.log('Pensamento carregados:', listaPensamentos);
+
+    if(this.paginaAtual === 1){
+      this.listaPensamentos = listaPensamentos;
+    } else {
       const pensamentosUnicos = listaPensamentos.filter(pensamento => {
         return !this.listaPensamentos.some(existingPensamento => existingPensamento.id === pensamento.id);
       });
       this.listaPensamentos.push(...pensamentosUnicos);
-      if(!pensamentosUnicos.length){
-        this.haMaisPensamentos = false;
-      }
-    });
-  }
+    }
+    this.haMaisPensamentos = listaPensamentos.length > 0;
+  });
+ }
 
-  pesquisarPensamentos(){
-    console.log('Filtrando pensamentos com filtro: ', this.filtro);
-    this.carregarMaisPensamentos();
-    this.haMaisPensamentos = true;
-    this.paginaAtual = 1;
-    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
-      this.listaPensamentos = listaPensamentos
-    })
+  carregarMaisPensamentos(){
+    if(this.haMaisPensamentos){
+      this.paginaAtual++;
+      this.carregarPensamentos();
+    }
   }
 
   listarFavoritos(){
@@ -73,10 +80,11 @@ export class ListarPensamentoComponent implements OnInit {
     this.haMaisPensamentos = true
     this.paginaAtual = 1
     this.favoritos = true;
+
     this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaDePensamentosFavoritos => {
       this.listaPensamentos = listaDePensamentosFavoritos
       this.listaFavoritos = listaDePensamentosFavoritos
-    })
+    });
   }
 
   recarregarComponente(){

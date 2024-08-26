@@ -29,11 +29,67 @@ export class EditarPensamentoComponent {
   ){ }
 
   ngOnInit(): void{
+<<<<<<< HEAD
     const id = this.route.snapshot.paramMap.get('id')
     this.service.buscarPorId(id!).subscribe((pensamento) => {
       this.pensamento = pensamento
     })
   }
+=======
+      
+      this.formulario = this.FormBuilder.group({
+        conteudo: ['', Validators.compose([
+          Validators.required,
+          Validators.pattern(/(.|\s)*\S(.|\s)*/),
+          Validators.minLength(5)
+        ])],
+        autoria: ['', Validators.compose([
+          Validators.required,
+          Validators.minLength(3),
+          minusculoValidator
+        ])],
+        modelo: [''],
+        favorito: [false]
+      });
+    
+      const id = this.route.snapshot.paramMap.get('id');
+    
+      if(id) {
+        this.service.buscarPorId(id).subscribe((pensamento: Pensamento) => {
+          this.pensamento = pensamento;
+    
+          this.formulario.patchValue({
+            conteudo: this.pensamento.conteudo,
+            autoria: this.pensamento.autoria,
+            modelo: this.pensamento.modelo,
+            favorito: this.pensamento.favorito
+          });
+        }, error => {
+          console.error('Erro ao buscar pensamento:', error);
+        });
+      } else {
+        console.error('ID do pensamento não encontrado na rota');
+      }
+    }
+  
+  editarPensamento(): void {
+      if (this.pensamento.id) {
+        this.pensamento.conteudo = this.formulario.get('conteudo')?.value;
+        this.pensamento.autoria = this.formulario.get('autoria')?.value;
+        this.pensamento.modelo = this.formulario.get('modelo')?.value;
+        this.pensamento.favorito = this.formulario.get('favorito')?.value;
+    
+        this.service.editar(this.pensamento).subscribe(() => {
+          this.router.navigate(['/listarPensamento']);
+        }, error => {
+          console.error('Erro ao editar o pensamento:', error);
+        });
+      } else {
+        console.error('Pensamento sem ID não pode ser editado');
+      }
+    }
+    
+>>>>>>> api
 
   editarPensamento(){
     this.service.editar(this.pensamento).subscribe(() => {
