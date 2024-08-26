@@ -47,9 +47,17 @@
 </div>
 
 <h1>🚀Features</h1>
-<li>Thoughts created and stored in a JSON format within Json-server;</li>
-<li>Editing thoughts;</li>
-<li>Exclusion of thoughts.</li>
+<h3>🔨 Creating thoughts</h3>
+<p>Your can create your thoughts by putting in a reference to the author of the thought and also by choosing a template to personalize your thought note.</p>
+<div align="center">
+  <img src="README_files/gifs/CriarPensamento.gif" alt="Create thoughts">
+</div>
+
+<h3>✏️Editing thoughts</h3>
+<p>You can edit your thoughts and adjust the references to authors at any time.</p>
+<div align="center">
+  <img src="README_files/gifs/EditarPensamento.gif" alt="Edit thoughts">
+</div>
 
 <h1>🌐Technologies</h1>
 <ul>
