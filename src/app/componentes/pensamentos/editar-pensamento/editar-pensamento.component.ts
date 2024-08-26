@@ -2,7 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PensamentoService } from '../pensamento.service';
 import { Pensamento } from './../pensamento';
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, FormBuilder } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { minusculoValidator } from '../../minusculoValidator/minusculoValidator';
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -29,13 +30,6 @@ export class EditarPensamentoComponent {
   ){ }
 
   ngOnInit(): void{
-<<<<<<< HEAD
-    const id = this.route.snapshot.paramMap.get('id')
-    this.service.buscarPorId(id!).subscribe((pensamento) => {
-      this.pensamento = pensamento
-    })
-  }
-=======
       
       this.formulario = this.FormBuilder.group({
         conteudo: ['', Validators.compose([
@@ -89,15 +83,17 @@ export class EditarPensamentoComponent {
       }
     }
     
->>>>>>> api
 
-  editarPensamento(){
-    this.service.editar(this.pensamento).subscribe(() => {
-      this.router.navigate(['/listarPensamento'])
-    })
-  }
 
   cancelar(){
     this.router.navigate(['/listarPensamento'])
+  }
+
+  habilitarBotao(){
+    if(this.formulario.valid){
+      return 'botao'
+    } else {
+      return 'botao__desabilitado'
+    }
   }
 }

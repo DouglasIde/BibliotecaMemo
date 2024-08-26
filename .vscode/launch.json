@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "MemotecaApplication",
+      "request": "launch",
+      "mainClass": "com.douglas.memoteca.MemotecaApplication",
+      "projectName": "memoteca"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",
