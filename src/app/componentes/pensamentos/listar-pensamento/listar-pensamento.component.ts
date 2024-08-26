@@ -62,12 +62,25 @@ export class ListarPensamentoComponent implements OnInit {
  }
 
  carregarPensamentos(){
+  // this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
+  //   console.log('Pensamentos carregados:', listaPensamentos);
+  //   if(this.paginaAtual === 1){
+  //     this.listaPensamentos = listaPensamentos;
+  //   } else {
+  //     this.listaPensamentos.push(...listaPensamentos);
+  //   }
+  //   this.haMaisPensamentos = listaPensamentos.length > 0;
+  // });
   this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe(listaPensamentos => {
-    console.log('Pensamentos carregados:', listaPensamentos);
+    console.log('Pensamento carregados:', listaPensamentos);
+
     if(this.paginaAtual === 1){
       this.listaPensamentos = listaPensamentos;
     } else {
-      this.listaPensamentos.push(...listaPensamentos);
+      const pensamentosUnicos = listaPensamentos.filter(pensamento => {
+        return !this.listaPensamentos.some(existingPensamento => existingPensamento.id === pensamento.id);
+      });
+      this.listaPensamentos.push(...pensamentosUnicos);
     }
     this.haMaisPensamentos = listaPensamentos.length > 0;
   });
