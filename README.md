@@ -4,8 +4,8 @@
 <div>
   <p align="center">
     <em>
-      IDE: Visual Studio Code<br>
-      IDE API: Spring Tool Suite<br><br>
+      IDE: <a href="https://code.visualstudio.com/">Visual Studio Code</a><br>
+      IDE API: <a href="https://spring.io/tools">Spring Tool Suite</a><br><br>
     </em>
       <a href="https://www.linkedin.com/in/douglas-yugo/" target="_blank">
         <img src="https://img.shields.io/static/v1?label=Author&message=DouglasYugo&color=blue&style=for-the-badge&logo=LinkedIn" alt="Author: Douglas Yugo">
