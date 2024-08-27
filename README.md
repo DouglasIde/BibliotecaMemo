@@ -56,10 +56,6 @@
 <p>This will initialize the API server and the application development server.</p>
 <p><em>Este procedimento inicializará o servidor da API e o servidor de desenvolvimento da aplicação.</em></p><br>
 
-<div align="center">
-  <img src="README_files/exibition-project.gif" alt="Biblioteca Memo">
-</div>
-
 <h1>🚀Features</h1>
 <h3>🔨 Creating thoughts</h3>
 <p>Your can create your thoughts by putting in a reference to the author of the thought and also by choosing a template to personalize your thought note.</p>
