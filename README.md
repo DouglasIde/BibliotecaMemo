@@ -33,7 +33,18 @@
   <p><em>ALERT: The VERCEL link is not working, because for the website to work it needs to execute the API first. So it won't work via the Vercel link.</em></p>
 </div><br>
 
-[![Assista o vídeo](https://img.youtube.com/vi/AcL2BgHTrhs/maxresdefault.jpg)](https://www.youtube.com/watch?v=AcL2BgHTrhs)
+
+<h1>🎥Video Presentation</h1>
+<p>The video is in Brazilian Portuguese, but I've added English subtitles. By clicking on the image below, you'll be redirected to the project presentation video on youtube.</p>
+<p><em>Ao clicar na imagem abaixo, você será redirecionado diretamente para o meu vídeo de apresentação do projeto no youtube.</em></p>
+
+<div>
+  <p align="center">
+  <a href="https://www.youtube.com/watch?v=AcL2BgHTrhs">
+    <img src="https://img.youtube.com/vi/AcL2BgHTrhs/maxresdefault.jpg" alt="Assista o vídeo" />
+  </a>
+</p>
+</div>
 
 <h1>🤔How to use</h1>
 <p>To run this project, follow these steps: </p>
