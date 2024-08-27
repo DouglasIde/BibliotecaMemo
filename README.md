@@ -50,6 +50,7 @@
 <p>To run this project, follow these steps: </p>
 <p><em>Para executar este projeto, siga os seguintes passos:</em></p><br>
 
+<li>Make sure node.js is installed as well as angular cli. <em>Certifique-se que o node.js esteja instalado e também o angular cli</em></li>
 <li>In your IDE's terminal, start the json-server API using the <b>npm start</b> command. <em>No terminal da sua IDE, inicie a API json-server utilizando o comando <b>npm start</b></em></li>
 <li>In a new terminal, run the <b>ng server</b> or <b>ng s</b> command.<em> Em um novo terminal, execute o comando <b>ng serve</b> ou <b>ng s</b></em></li><br><br>
 <p>This will initialize the API server and the application development server.</p>
