@@ -33,6 +33,8 @@
   <p><em>ALERT: The VERCEL link is not working, because for the website to work it needs to execute the API first. So it won't work via the Vercel link.</em></p>
 </div><br>
 
+[![Assista o vídeo](https://img.youtube.com/vi/AcL2BgHTrhs/maxresdefault.jpg)](https://www.youtube.com/watch?v=AcL2BgHTrhs)
+
 <h1>🤔How to use</h1>
 <p>To run this project, follow these steps: </p>
 <p><em>Para executar este projeto, siga os seguintes passos:</em></p><br>
